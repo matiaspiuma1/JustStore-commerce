@@ -9,10 +9,13 @@ const color = teal[900];
 const NavBar = () => {
 	return (
 		<Box mt={4}>
-			<AppBar sx={{ background: teal[400] }}>
+			<AppBar sx={{ background: teal[400], alignContent: 'center' }}>
 				<Toolbar>
-					<IconButton size='large' edge='start' aria-label='menu' sx={{ mr: 2 }}>
-						<img src={logo} alt='Icono Tienda' />
+					<IconButton edge='start' aria-label='menu' sx={{ mr: 2 }}>
+						<img src={logo} alt='Icono Tienda' height='38px' sx={{ alignContent: 'center' }} />
+						<Typography variant='h6' color='blue'>
+							JustStore
+						</Typography>
 					</IconButton>
 					<Typography>
 						<Link href='#' component='button' variant='h6' color='inherit' underline='none' sx={{ mr: 2 }}>

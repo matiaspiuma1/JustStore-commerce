@@ -1,8 +1,14 @@
 import React from 'react';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
 
 const App = () => {
-	return <NavBar />;
+	return (
+		<>
+			<NavBar />
+			<ItemListContainer greeting='Soy una prop!' />
+		</>
+	);
 };
 
 export default App;

@@ -1,39 +1,37 @@
 import React from 'react';
 import { IconButton, Badge, Toolbar, AppBar, Box, Typography, Link } from '@mui/material';
-import { AddShoppingCart } from '@mui/icons-material';
-import { teal } from '@mui/material/colors';
 import logo from '../../assets/clothes-shop.png';
-
-const color = teal[900];
+import './NavBar.css';
+import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
 	return (
-		<Box mt={4}>
-			<AppBar sx={{ background: teal[400], alignContent: 'center' }}>
+		<Box>
+			<AppBar sx={{ background: '#322F3D' }}>
 				<Toolbar>
 					<IconButton edge='start' aria-label='menu' sx={{ mr: 2 }}>
-						<img src={logo} alt='Icono Tienda' height='38px' sx={{ alignContent: 'center' }} />
-						<Typography variant='h6' color='blue'>
+						<img src={logo} alt='Icono Tienda' height='38px' />
+						<Typography variant='h6' sx={{ color: 'white' }}>
 							JustStore
 						</Typography>
 					</IconButton>
-					<Typography>
-						<Link href='#' component='button' variant='h6' color='inherit' underline='none' sx={{ mr: 2 }}>
+					<Typography className='links'>
+						<Link href='#' component='button'>
 							Inicio
 						</Link>
-						<Link href='#' component='button' variant='h6' color='inherit' underline='none' sx={{ mr: 2 }}>
+						<Link href='#' component='button'>
 							Tienda
 						</Link>
-						<Link href='#' component='button' variant='h6' color='inherit' underline='none' sx={{ mr: 2 }}>
+						<Link href='#' component='button'>
 							Nosotros
 						</Link>
-						<Link href='#' component='button' variant='h6' color='inherit' underline='none'>
+						<Link href='#' component='button'>
 							Contacto
 						</Link>
 					</Typography>
-					<IconButton sx={{ ml: 'auto' }}>
-						<Badge badgeContent={5}>
-							<AddShoppingCart />
+					<IconButton sx={{ ml: 'auto', color: 'white' }}>
+						<Badge badgeContent={10}>
+							<CartWidget />
 						</Badge>
 					</IconButton>
 				</Toolbar>

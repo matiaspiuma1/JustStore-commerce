@@ -9,7 +9,7 @@ const NavBar = () => {
 		<Box>
 			<AppBar sx={{ background: '#322F3D' }}>
 				<Toolbar>
-					<IconButton edge='start' aria-label='menu' sx={{ mr: 2 }}>
+					<IconButton edge='start' aria-label='menu' sx={{ mr: 4 }}>
 						<img src={logo} alt='Icono Tienda' height='38px' />
 						<Typography variant='h6' sx={{ color: 'white' }}>
 							JustStore
@@ -28,9 +28,12 @@ const NavBar = () => {
 						<Link href='#' component='button'>
 							Contacto
 						</Link>
+						<Link href='#' component='button'>
+							FAQ
+						</Link>
 					</Typography>
 					<IconButton sx={{ ml: 'auto', color: 'white' }}>
-						<Badge badgeContent={10}>
+						<Badge badgeContent={2}>
 							<CartWidget />
 						</Badge>
 					</IconButton>

@@ -1,0 +1,88 @@
+const Products = [
+	{
+		id: 1,
+		title: 'NIKE SB CHERUB BLACK',
+		price: 4799,
+		size: 'L',
+		type: 'Remera',
+	},
+	{
+		id: 2,
+		title: 'NIKE SB TE LOGO PINK',
+		price: 4450,
+		size: 'M',
+		type: 'Remera',
+	},
+	{
+		id: 3,
+		title: 'WOODOO LABEL BRICK',
+		price: 2490,
+		size: 'XL',
+		type: 'Remera',
+	},
+	{
+		id: 4,
+		title: 'WOODOO HALLOWEEN BLACK',
+		price: 2490,
+		size: 'L',
+		type: 'Remera',
+	},
+	{
+		id: 5,
+		title: 'NIKE SB BLAZER MID FADED',
+		price: 21999,
+		size: '9 US',
+		type: 'Zapatillas',
+	},
+	{
+		id: 6,
+		title: 'NIKE SB CHRON 2 GREY',
+		price: 10999,
+		size: '8.5 US',
+		type: 'Zapatillas',
+	},
+	{
+		id: 7,
+		title: 'NIKE SB SHANE T',
+		price: 14999,
+		size: '9.5 US',
+		type: 'Zapatillas',
+	},
+	{
+		id: 8,
+		title: 'THRASHER HOODIE SAN FRANCISCO',
+		price: 7500,
+		size: 'XL',
+		type: 'Buzo',
+	},
+	{
+		id: 9,
+		title: 'VANS CLASSIC FULL ZIP BLACK',
+		price: 9700,
+		size: 'M',
+		type: 'Campera',
+	},
+	{
+		id: 10,
+		title: 'SANTA CRUZ DOUBLEN PRINT BLACK',
+		price: 7499,
+		size: 'XS',
+		type: 'Campera',
+	},
+	{
+		id: 11,
+		title: 'HURLEY OAO STRETCH',
+		price: 6990,
+		size: '32',
+		type: 'Pantalon',
+	},
+	{
+		id: 12,
+		title: 'VOLCOM EWW BLACK',
+		price: 7000,
+		size: '34',
+		type: 'Pantalon',
+	},
+];
+
+export default Products;

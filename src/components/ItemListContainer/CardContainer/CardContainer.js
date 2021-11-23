@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardMedia, Typography, Grid, Box } from '@mui/material';
-import ItemCount from '../ItemListContainer/ItemCount';
+import ItemCount from '../ItemCount';
 
-const CardContainer = ({ stock }) => {
+const CardContainer = () => {
+	const [products, setProducts] = useState([]);
+	useEffect(() => {
+		fetch('../../../data/data')
+			.then((res) => res.json())
+			.then((json) => setProducts(json));
+	}, []);
+
 	return (
-		<Box margin={2}>
+		<Box margin={2} sx={{ marginTop: '100px' }}>
 			<Grid container spacing={2} columns={12}>
 				<Grid item xs={12} sm={6} md={4} lg={3}>
 					<Card>
@@ -17,7 +24,7 @@ const CardContainer = ({ stock }) => {
 								Talle L
 							</Typography>
 							<Typography variant='body2' color='text.secondary'>
-								Stock: {stock}
+								Stock:
 							</Typography>
 							<Typography variant='body2' color='text.secondary'>
 								Precio: 2450$

@@ -14,7 +14,7 @@ const Product = ({ data }) => {
 			sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', margin: '15px' }}
 		>
 			<Card>
-				<CardMedia component='img' height='240' image={`../../assets/images/${data.id}.jpg`} alt={data.title} />
+				<CardMedia component='img' height='450' image={data.img} alt={data.title} />
 				<CardContent>
 					<Typography gutterBottom variant='h6' component='div' textAlign='center'>
 						{data.title}

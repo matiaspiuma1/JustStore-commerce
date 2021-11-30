@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Product from '../Product/Product';
+
+//Components
+import Item from '../Item/Item';
 import { RequestData } from '../../data/RequestData';
 import { Box, Grid } from '@mui/material';
 
@@ -17,13 +19,9 @@ const ItemListContainer = () => {
 	return (
 		<>
 			<Box sx={{ flexGrow: 1 }}>
-				<Grid
-					container
-					justifyContent='space-evenly'
-					sx={{ maxWidth: '100%', marginTop: '60px', columnGap: '70px' }}
-				>
+				<Grid container justifyContent='space-evenly' sx={{ marginTop: '60px', columnGap: '70px' }}>
 					{products.map((product) => {
-						return <Product data={product} key={product.title} />;
+						return <Item data={product} key={product.title} />;
 					})}
 				</Grid>
 			</Box>

@@ -1,8 +1,11 @@
 import React from 'react';
-import { Card, CardContent, Typography, Grid, CardMedia } from '@mui/material';
-import ItemCount from './ItemCount';
 
-const Product = ({ data }) => {
+//Components
+import { Card, CardContent, Typography, Grid, CardMedia } from '@mui/material';
+import ItemCount from '../ItemCount/ItemCount';
+import { Link } from 'react-router-dom';
+
+const ItemDetail = ({ data }) => {
 	return (
 		<Grid
 			item
@@ -14,7 +17,9 @@ const Product = ({ data }) => {
 			sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', margin: '15px' }}
 		>
 			<Card>
-				<CardMedia component='img' height='450' image={data.img} alt={data.title} />
+				<Link to={`/item/${data.id}`}>
+					<CardMedia component='img' height='550' image={data.img} alt={data.title} />
+				</Link>
 				<CardContent>
 					<Typography gutterBottom variant='h6' component='div' textAlign='center'>
 						{data.title}
@@ -32,4 +37,4 @@ const Product = ({ data }) => {
 	);
 };
 
-export default Product;
+export default ItemDetail;

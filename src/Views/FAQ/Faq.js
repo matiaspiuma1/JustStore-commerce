@@ -1,7 +1,8 @@
 import React from 'react';
+import './Faq.css';
 
 const Faq = () => {
-	return <div>Preguntas Frequentes</div>;
+	return <div className='faq'>Preguntas Frequentes</div>;
 };
 
 export default Faq;

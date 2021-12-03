@@ -122,7 +122,7 @@ const ItemDetailContainer = () => {
 						setProductDetail(res);
 					})
 					.catch((err) => console.log(err));
-	}, []);
+	});
 
 	return (
 		<>

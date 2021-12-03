@@ -1,16 +1,13 @@
-.links {
+.nav-link {
+	text-decoration: none;
 	font-size: 20px;
-}
-
-.links button {
 	color: white;
 	margin-right: 20px;
 	padding: 5px;
 	font-size: 20px;
 	text-decoration: none;
 }
-
-.links button:hover {
+.nav-link:hover {
 	background-color: #4b5d67;
 	opacity: 0.9, 0.8, 0.7;
 	border-radius: 5px;

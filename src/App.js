@@ -9,6 +9,7 @@ import About from './Views/About/About';
 import Store from './Views/Store/Store';
 import Contact from './Views/Contact/Contact';
 import Faq from './Views/FAQ/Faq';
+import Home from './Views/Home/Home';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
 			<>
 				<NavBar />
 				<Routes>
+					<Route path='/' element={<Home />} />
 					<Route path='/About' element={<About />} />
 					<Route path='/Store' element={<Store />} />
 					<Route path='/Contact' element={<Contact />} />

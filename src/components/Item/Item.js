@@ -1,40 +1,32 @@
 import React from 'react';
+import './Item.css';
 
 //Components
-import { Card, CardContent, Typography, Grid, CardMedia } from '@mui/material';
-import ItemCount from '../ItemCount/ItemCount';
+import { Card, CardContent, Typography, Grid, CardMedia, Button, Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const ItemDetail = ({ data }) => {
+const Item = ({ data }) => {
 	return (
-		<Grid
-			item
-			xs={12}
-			sm={6}
-			md={3}
-			lg={3}
-			xl={3}
-			sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', margin: '15px' }}
-		>
+		<Grid item xs={12} sm={6} md={3} lg={3} xl={3} sx={{ boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px', margin: '15px' }}>
 			<Card>
-				<Link to={`/item/${data.id}`}>
-					<CardMedia component='img' height='550' image={data.img} alt={data.title} />
-				</Link>
+				<CardMedia component='img' height='350' image={data.img} alt={data.title} />
 				<CardContent>
-					<Typography gutterBottom variant='h6' component='div' textAlign='center'>
+					<Typography gutterBottom variant='inherit' component='div' align='center'>
 						{data.title}
 					</Typography>
-					<Typography variant='body2' color='text.primary' fontSize={20} textAlign='center'>
+					<Typography variant='body1' color='text.primary' textAlign='center'>
 						${data.price}
 					</Typography>
-					<Typography variant='body2' color='text.secondary' fontSize={20} textAlign='center'>
-						Talle: {data.size}
-					</Typography>
 				</CardContent>
-				<ItemCount />
+				<Divider />
+				<Link to={`/item/${data.id}`} className='itemLink'>
+					<Button fullWidth size='large' sx={{ background: 'rgba(199, 199, 199, 0.41)' }}>
+						Ver más
+					</Button>
+				</Link>
 			</Card>
 		</Grid>
 	);
 };
 
-export default ItemDetail;
+export default Item;

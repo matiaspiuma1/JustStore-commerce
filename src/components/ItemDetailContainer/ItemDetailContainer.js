@@ -10,6 +10,7 @@ const data = [
 		size: 'L',
 		type: 'Remera',
 		img: 'https://i8.amplience.net/i/jpl/sz_458722_a?qlt=92&w=600&h=464&v=1&fmt=auto',
+		stock: 10,
 	},
 	{
 		id: 2,
@@ -18,6 +19,7 @@ const data = [
 		size: 'M',
 		type: 'Remera',
 		img: 'https://drifters.com.ar/uploads/product_image/22983/650w_DriftersPDP_APP_CV7539-629_Shot1.jpg',
+		stock: 4,
 	},
 	{
 		id: 3,
@@ -26,6 +28,7 @@ const data = [
 		size: 'XL',
 		type: 'Remera',
 		img: 'https://drifters.com.ar/uploads/product_image/24710/DriftersPDP_APP_WO00001905-600_Shot1.jpg',
+		stock: 6,
 	},
 	{
 		id: 4,
@@ -34,6 +37,7 @@ const data = [
 		size: 'L',
 		type: 'Remera',
 		img: 'https://drifters.com.ar/uploads/product_image/24694/DriftersPDP_APP_WO00001904-001_Shot1.jpg',
+		stock: 12,
 	},
 	{
 		id: 5,
@@ -42,6 +46,7 @@ const data = [
 		size: '9 US',
 		type: 'Zapatillas',
 		img: 'https://drifters.com.ar/uploads/product_image/23551/DriftersPDP_FTW_DA1839-001_Shot1.jpg',
+		stock: 24,
 	},
 	{
 		id: 6,
@@ -50,6 +55,7 @@ const data = [
 		size: '8.5 US',
 		type: 'Zapatillas',
 		img: 'https://drifters.com.ar/uploads/product_image/24661/DriftersPDP_FTW_DM3494-003_Shot1.jpg',
+		stock: 14,
 	},
 	{
 		id: 7,
@@ -58,6 +64,7 @@ const data = [
 		size: '9.5 US',
 		type: 'Zapatillas',
 		img: 'https://drifters.com.ar/uploads/product_image/24156/DriftersPDP_FTW_CU9224-101_Shot1.jpg',
+		stock: 31,
 	},
 	{
 		id: 8,
@@ -66,6 +73,7 @@ const data = [
 		size: 'XL',
 		type: 'Buzo',
 		img: 'https://drifters.com.ar/uploads/product_image/23885/DriftersPDP_APP_TRSH003414-080_Shot1.jpg',
+		stock: 11,
 	},
 	{
 		id: 9,
@@ -74,6 +82,7 @@ const data = [
 		size: 'M',
 		type: 'Campera',
 		img: 'https://drifters.com.ar/uploads/product_image/24024/DriftersPDP_APP_AR-0VCFNGO-001_Shot1.jpg',
+		stock: 4,
 	},
 	{
 		id: 10,
@@ -82,6 +91,7 @@ const data = [
 		size: 'XS',
 		type: 'Campera',
 		img: 'https://drifters.com.ar/uploads/product_image/23030/DriftersPDP_APP_STC2946000-F20_Shot1.jpg',
+		stock: 19,
 	},
 	{
 		id: 11,
@@ -90,6 +100,7 @@ const data = [
 		size: '32',
 		type: 'Pantalon',
 		img: 'https://drifters.com.ar/uploads/product_image/20037/BV1696%20235%20A.jpg',
+		stock: 15,
 	},
 	{
 		id: 12,
@@ -98,17 +109,20 @@ const data = [
 		size: '34',
 		type: 'Pantalon',
 		img: 'https://drifters.com.ar/uploads/product_image/22869/DriftersPDP_APP_VOL0001095-F20_Shot1.jpg',
+		stock: 18,
 	},
 ];
 
 const ItemDetailContainer = () => {
 	let { id } = useParams();
+	//Seteo un array vacio que luego se llena con la informacion de cada producto
 	const [productDetail, setProductDetail] = useState({});
+
 	let getItem = new Promise((resolve, reject) => {
 		setTimeout(() => {
 			data ? resolve(data) : reject('Error 404');
-		});
-	}, 2000);
+		}, 1000);
+	});
 
 	useEffect(() => {
 		id

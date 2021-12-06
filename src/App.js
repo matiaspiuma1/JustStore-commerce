@@ -10,6 +10,7 @@ import Store from './Views/Store/Store';
 import Contact from './Views/Contact/Contact';
 import Faq from './Views/FAQ/Faq';
 import Home from './Views/Home/Home';
+import Cart from './Views/Cart/Cart';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
 					<Route path='/Store' element={<Store />} />
 					<Route path='/Contact' element={<Contact />} />
 					<Route path='/Faq' element={<Faq />} />
+					<Route path='/Cart' element={<Cart />} />
 					<Route path='/item/:id' element={<ItemDetailContainer />} />
 				</Routes>
 			</>

@@ -1,47 +1,44 @@
 import React from 'react';
 
 //Components
-import { IconButton, Badge, Toolbar, AppBar, Box, Typography } from '@mui/material';
 import logo from '../../assets/clothes-shop.png';
 import './NavBar.css';
 import CartWidget from '../CartWidget/CartWidget';
 import { Link } from 'react-router-dom';
+import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
 	return (
-		<Box>
-			<AppBar sx={{ background: '#322F3D' }}>
-				<Toolbar>
-					<Link to='/' className='nav-link'>
-						<IconButton edge='start' aria-label='menu' sx={{ mr: 4 }} src='../../index.html'>
-							<img src={logo} alt='Icono Tienda' height='38px' />
-							<Typography variant='h6' sx={{ color: 'white' }}>
-								JustStore
-							</Typography>
-						</IconButton>
-					</Link>
-					<Typography>
-						<Link to='/Store' className='nav-link'>
+		<>
+			<Navbar collapseOnSelect expand='sm' bg='dark' variant='dark' fixed='top'>
+				<Link to='/' href='#home' className='nav-link'>
+					<Navbar.Brand>
+						<img alt='Icono tienda' src={logo} width='32' height='32' className='d-inline-block align-top' />
+						JustStore
+					</Navbar.Brand>
+				</Link>
+				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+				<Navbar.Collapse id='responsive-navbar-nav'>
+					<Nav className='me-auto'>
+						<Link to='/Store' className='nav-link text-center'>
 							Tienda
 						</Link>
-						<Link to='/About' className='nav-link'>
+						<Link to='/About' className='nav-link text-center'>
 							Nosotros
 						</Link>
-						<Link to='/Contact' className='nav-link'>
+						<Link to='/Contact' className='nav-link text-center'>
 							Contacto
 						</Link>
-						<Link to='/Faq' className='nav-link'>
+						<Link to='/Faq' className='nav-link text-center'>
 							FAQ
 						</Link>
-					</Typography>
-					<IconButton sx={{ ml: 'auto', color: 'white' }}>
-						<Badge badgeContent={2}>
+						<Link to='/Cart' className='nav-link text-center'>
 							<CartWidget />
-						</Badge>
-					</IconButton>
-				</Toolbar>
-			</AppBar>
-		</Box>
+						</Link>
+					</Nav>
+				</Navbar.Collapse>
+			</Navbar>
+		</>
 	);
 };
 

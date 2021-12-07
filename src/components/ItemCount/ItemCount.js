@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import './ItemCount.css';
 
 //Components
 import { CardActions, Button, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 //Le paso la prop de la data de cada item para usar el stock disponible de cada producto
 const ItemCount = ({ data }) => {
 	//Seteo un counter inicial en 1
 	const [counter, setCounter] = useState(1);
+	const [shopBtn, setShopBtn] = useState(false);
 
 	const addProduct = () => {
 		//Y dependiendo el stock de cada producto el cliente va a poder sumar o restar productos
@@ -28,25 +31,42 @@ const ItemCount = ({ data }) => {
 		e.preventDefault();
 		const price = data.price;
 		let total = price * counter;
-		alert(`Agregaste a tu carrito: ${counter} ${data.title}, Talle: ${data.size}, Precio final: $${total} `);
+		alert(`Agregaste a tu carrito: ${counter} ${data.title}, Talle: ${data.size}, Precio final: $${total}`);
+		setShopBtn(true);
 	};
 
 	return (
 		<>
-			<CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-				<Button size='small' variant='outlined' onClick={deleteProduct}>
-					-
+			<div style={{ display: !shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
+				<CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
+					<Button size='small' variant='outlined' onClick={deleteProduct}>
+						-
+					</Button>
+					<Typography textAlign='center' marginRight='15px' marginLeft='15px'>
+						{counter} producto/s
+					</Typography>
+					<Button id='agregarBtn' size='small' variant='outlined' onClick={addProduct}>
+						+
+					</Button>
+				</CardActions>
+				<Button onClick={onAdd} size='large' fullWidth={true}>
+					Agregar carrito
 				</Button>
-				<Typography textAlign='center' marginRight='15px' marginLeft='15px'>
-					{counter} producto/s
-				</Typography>
-				<Button id='agregarBtn' size='small' variant='outlined' onClick={addProduct}>
-					+
-				</Button>
-			</CardActions>
-			<Button onClick={onAdd} size='large' fullWidth={true} sx={{ marginRight: '10px' }}>
-				Agregar carrito
-			</Button>
+			</div>
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
+				<CardActions sx={{ display: shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
+					<Link to='/Cart' className='linkCarrito'>
+						<Button size='large' fullWidth={true}>
+							Terminar compra
+						</Button>
+					</Link>
+					<Link to='/Store' className='linkCarrito'>
+						<Button size='large' fullWidth={true}>
+							Seguir comprando
+						</Button>
+					</Link>
+				</CardActions>
+			</div>
 		</>
 	);
 };

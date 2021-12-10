@@ -1,8 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//Firebase
+import { db } from './Firebase/FirebaseConfig';
 
 //Components
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './Components/NavBar/NavBar';
+import { ItemsProvider } from './Context';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Views
 import About from './Views/About/About';
@@ -11,12 +15,12 @@ import Contact from './Views/Contact/Contact';
 import Faq from './Views/FAQ/Faq';
 import Home from './Views/Home/Home';
 import Cart from './Views/Cart/Cart';
-import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 
 const App = () => {
 	return (
 		<Router>
-			<>
+			<ItemsProvider>
 				<NavBar />
 				<Routes>
 					<Route path='/' element={<Home />} />
@@ -27,7 +31,7 @@ const App = () => {
 					<Route path='/Cart' element={<Cart />} />
 					<Route path='/item/:id' element={<ItemDetailContainer />} />
 				</Routes>
-			</>
+			</ItemsProvider>
 		</Router>
 	);
 };

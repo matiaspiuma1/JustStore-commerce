@@ -4,7 +4,7 @@ import React from 'react';
 import logo from '../../assets/clothes-shop.png';
 import './NavBar.css';
 import CartWidget from '../CartWidget/CartWidget';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Navbar, Nav } from 'react-bootstrap';
 
 const NavBar = () => {
@@ -20,21 +20,21 @@ const NavBar = () => {
 				<Navbar.Toggle aria-controls='responsive-navbar-nav' />
 				<Navbar.Collapse id='responsive-navbar-nav'>
 					<Nav className='me-auto'>
-						<Link to='/Store' className='nav-link text-center'>
+						<NavLink to='/Store' className='nav-link text-center' activeclassname='selected'>
 							Tienda
-						</Link>
-						<Link to='/About' className='nav-link text-center'>
+						</NavLink>
+						<NavLink to='/About' className='nav-link text-center' activeclassname='selected'>
 							Nosotros
-						</Link>
-						<Link to='/Contact' className='nav-link text-center'>
+						</NavLink>
+						<NavLink to='/Contact' className='nav-link text-center' activeclassname='selected'>
 							Contacto
-						</Link>
-						<Link to='/Faq' className='nav-link text-center'>
+						</NavLink>
+						<NavLink to='/Faq' className='nav-link text-center' activeclassname='selected'>
 							FAQ
-						</Link>
-						<Link to='/Cart' className='nav-link text-center'>
+						</NavLink>
+						<NavLink to='/Cart' className='nav-link text-center' activeclassname='selected'>
 							<CartWidget />
-						</Link>
+						</NavLink>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>

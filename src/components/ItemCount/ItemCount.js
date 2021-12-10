@@ -6,14 +6,14 @@ import { CardActions, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 //Le paso la prop de la data de cada item para usar el stock disponible de cada producto
-const ItemCount = ({ data }) => {
+const ItemCount = ({ item }) => {
 	//Seteo un counter inicial en 1
 	const [counter, setCounter] = useState(1);
 	const [shopBtn, setShopBtn] = useState(false);
 
 	const addProduct = () => {
 		//Y dependiendo el stock de cada producto el cliente va a poder sumar o restar productos
-		if (counter < data.stock) {
+		if (counter < item.stock) {
 			setCounter(counter + 1);
 		}
 	};
@@ -29,9 +29,9 @@ const ItemCount = ({ data }) => {
 	const onAdd = (e) => {
 		//Variables para el precio final
 		e.preventDefault();
-		const price = data.price;
+		const price = item.price;
 		let total = price * counter;
-		alert(`Agregaste a tu carrito: ${counter} ${data.title}, Talle: ${data.size}, Precio final: $${total}`);
+		alert(`Agregaste a tu carrito: ${counter} ${item.title}, Talle: ${item.size}, Precio final: $${total}`);
 		setShopBtn(true);
 	};
 

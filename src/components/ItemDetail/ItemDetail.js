@@ -1,5 +1,7 @@
 import React from 'react';
 import './ItemDetail.css';
+
+//Components
 import { Typography, Card, CardMedia, CardContent, Divider } from '@mui/material';
 import ItemCount from '../ItemCount/ItemCount';
 
@@ -33,7 +35,7 @@ const ItemDetail = ({ item }) => {
 					</Typography>
 				</CardContent>
 				<Divider variant='middle' />
-				<ItemCount data={item} />
+				<ItemCount item={item} />
 			</Card>
 		</div>
 	);

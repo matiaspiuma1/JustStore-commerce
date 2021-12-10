@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Firebase
-import { db } from './Firebase/FirebaseConfig';
+// import { db } from './Firebase/FirebaseConfig';
 
 //comps
 import NavBar from './components/NavBar/NavBar';

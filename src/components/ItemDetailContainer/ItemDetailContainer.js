@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 
 //Components
 import { useParams } from 'react-router-dom';
-import ItemDetail from '../../Components/ItemDetail/ItemDetail';
+import ItemDetail from '../ItemDetail/ItemDetail';
 import { Context } from '../../Context';
 
 const ItemDetailContainer = () => {

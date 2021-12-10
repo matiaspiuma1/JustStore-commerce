@@ -3,8 +3,8 @@ import React from 'react';
 //Firebase
 import { db } from './Firebase/FirebaseConfig';
 
-//Components
-import NavBar from './Components/NavBar/NavBar';
+//comps
+import NavBar from './components/NavBar/NavBar';
 import { ItemsProvider } from './Context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ import Contact from './Views/Contact/Contact';
 import Faq from './Views/FAQ/Faq';
 import Home from './Views/Home/Home';
 import Cart from './Views/Cart/Cart';
-import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 
 const App = () => {
 	return (

@@ -1,43 +1,38 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
+
+//Firebase
+import { db } from '../../Firebase/FirebaseConfig';
+import { collection, query, getDocs } from 'firebase/firestore';
 
 //Components
-import { useParams } from 'react-router-dom';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import { Context } from '../../Context';
+import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-	//Context
-	const [items] = useContext(Context);
+	//Item
+	const [item, setItem] = useState({});
 
-	//useParams para detectar el id por la URL
+	//ID de los productos para poder filtrarlo
 	let { id } = useParams();
 
-	//Seteo un array vacio que luego se llena con la información solamente del producto seleccionado
-	const [product, setProducts] = useState({});
-
-	let getItem = new Promise((res, reject) => {
-		setTimeout(() => {
-			items ? res(items) : reject('Error 404');
-		}, 500);
-	});
-
+	//Llamo a los productos desde la base de datos y luego filtro al item que se quiere ver
 	useEffect(() => {
-		id
-			? getItem
-					.then((res) => {
-						setProducts(res.find((a) => a.id === parseInt(id)));
-					})
-					.catch((err) => console.log(err))
-			: getItem
-					.then((res) => {
-						setProducts(res);
-					})
-					.catch((err) => console.log(err));
-	});
+		const getItem = async () => {
+			const q = query(collection(db, 'products'));
+			const item = [];
+			const querySnapshot = await getDocs(q);
+			querySnapshot.forEach((doc) => {
+				item.push({ ...doc.data(), id: doc.id });
+			});
+			setItem(item.find((itemID) => itemID.id === id));
+		};
+		getItem();
+	}, [id]);
 
+	//Y luego lo paso como prop
 	return (
 		<>
-			<ItemDetail item={product} />
+			<ItemDetail item={item} />;
 		</>
 	);
 };

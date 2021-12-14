@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ItemDetail.css';
 
 //Components
 import { Typography, Card, CardMedia, CardContent, Divider } from '@mui/material';
 import ItemCount from '../ItemCount/ItemCount';
 
+//Context
+import { Context } from '../../Context';
+
 const ItemDetail = ({ item }) => {
+	//Funcion agregar carrito
+	const { addItem } = useContext(Context);
+
+	const onAdd = (quantity) => {
+		addItem(item, quantity);
+	};
+
 	return (
 		<div className='contenedorCard'>
 			<Card
@@ -35,7 +45,7 @@ const ItemDetail = ({ item }) => {
 					</Typography>
 				</CardContent>
 				<Divider variant='middle' />
-				<ItemCount item={item} />
+				<ItemCount item={item} onAdd={onAdd} />
 			</Card>
 		</div>
 	);

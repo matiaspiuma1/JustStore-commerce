@@ -1,30 +1,14 @@
-import React from 'react';
-
-//Components
-import { Table } from 'react-bootstrap';
+import React, { useContext } from 'react';
 import './Cart.css';
 
+//Context
+import { Context } from '../../Context';
+
 const Cart = () => {
-	return (
-		<div className='Cart'>
-			<Table responsive='sm'>
-				<thead>
-					<tr>
-						<th>Producto</th>
-						<th>Cantidad</th>
-						<th>Total</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Producto</td>
-						<td>Cantidad</td>
-						<td>Total</td>
-					</tr>
-				</tbody>
-			</Table>
-		</div>
-	);
+	//Carrito
+	const { cart } = useContext(Context);
+
+	return <></>;
 };
 
 export default Cart;

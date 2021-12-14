@@ -5,33 +5,32 @@ import './ItemCount.css';
 import { CardActions, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-//Le paso la prop de la data de cada item para usar el stock disponible de cada producto
-const ItemCount = ({ item }) => {
+//Context
+
+//Mediante la prop item puedo determinar cuanto stock hay de cada item
+//La funcion onAdd sirve para almacenar el item y la cantidad
+const ItemCount = ({ item, onAdd }) => {
 	//Seteo un counter inicial en 1
 	const [counter, setCounter] = useState(1);
 	const [shopBtn, setShopBtn] = useState(false);
 
+	//Funciones para agregar y borrar productos
 	const addProduct = () => {
-		//Y dependiendo el stock de cada producto el cliente va a poder sumar o restar productos
 		if (counter < item.stock) {
 			setCounter(counter + 1);
 		}
 	};
 
 	//Función para eliminar los productos
-	const deleteProduct = () => {
+	const removeProduct = () => {
 		if (counter > 1) {
 			setCounter(counter - 1);
 		}
 	};
 
-	//Función para agregar al carrito
-	const onAdd = (e) => {
-		//Variables para el precio final
-		e.preventDefault();
-		const price = item.price;
-		let total = price * counter;
-		alert(`Agregaste a tu carrito: ${counter} ${item.title}, Talle: ${item.size}, Precio final: $${total}`);
+	//Funcion para cambiar los botones y almacenar la cantidad del producto
+	const handleOnAdd = () => {
+		onAdd(counter);
 		setShopBtn(true);
 	};
 
@@ -39,7 +38,7 @@ const ItemCount = ({ item }) => {
 		<>
 			<div style={{ display: !shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
 				<CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-					<Button size='small' variant='outlined' onClick={deleteProduct}>
+					<Button size='small' variant='outlined' onClick={removeProduct}>
 						-
 					</Button>
 					<Typography textAlign='center' marginRight='15px' marginLeft='15px'>
@@ -49,7 +48,7 @@ const ItemCount = ({ item }) => {
 						+
 					</Button>
 				</CardActions>
-				<Button onClick={onAdd} size='large' fullWidth={true}>
+				<Button onClick={handleOnAdd} size='large' fullWidth={true}>
 					Agregar carrito
 				</Button>
 			</div>

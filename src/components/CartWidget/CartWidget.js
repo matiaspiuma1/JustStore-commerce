@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import './CartWidget.css';
 
-//Components
+// Components
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Badge } from '@mui/material';
 
-//Context
+// Context
 import { Context } from '../../Context';
 
 const CartWidget = () => {
-	//Cantidad de items en el carrito
+	// Cantidad de items en el carrito
+
 	const { qtyItems } = useContext(Context);
 
 	return (

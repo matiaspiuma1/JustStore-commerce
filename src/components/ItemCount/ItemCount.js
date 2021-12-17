@@ -1,34 +1,37 @@
 import React, { useState } from 'react';
 import './ItemCount.css';
 
-//Components
+// Components
 import { CardActions, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-//Context
+// Context
 
-//Mediante la prop item puedo determinar cuanto stock hay de cada item
-//La funcion onAdd sirve para almacenar el item y la cantidad
+// Mediante la prop item puedo determinar cuanto stock hay de cada item
+// La funcion onAdd sirve para almacenar el item y la cantidad
 const ItemCount = ({ item, onAdd }) => {
-	//Seteo un counter inicial en 1
+	// Destructuración
+	const { stock } = item;
+
+	// Seteo un counter inicial en 1
 	const [counter, setCounter] = useState(1);
 	const [shopBtn, setShopBtn] = useState(false);
 
-	//Funciones para agregar y borrar productos
+	// Funciones para agregar y borrar productos
 	const addProduct = () => {
-		if (counter < item.stock) {
+		if (counter < stock) {
 			setCounter(counter + 1);
 		}
 	};
 
-	//Función para eliminar los productos
+	// Función para eliminar los productos
 	const removeProduct = () => {
 		if (counter > 1) {
 			setCounter(counter - 1);
 		}
 	};
 
-	//Funcion para cambiar los botones y almacenar la cantidad del producto
+	// Funcion para cambiar los botones y almacenar la cantidad del producto
 	const handleOnAdd = () => {
 		onAdd(counter);
 		setShopBtn(true);
@@ -48,19 +51,19 @@ const ItemCount = ({ item, onAdd }) => {
 						+
 					</Button>
 				</CardActions>
-				<Button onClick={handleOnAdd} size='large' fullWidth={true}>
+				<Button onClick={handleOnAdd} size='large' fullWidth>
 					Agregar carrito
 				</Button>
 			</div>
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<CardActions sx={{ display: shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
 					<Link to='/Cart' className='linkCarrito'>
-						<Button size='large' fullWidth={true}>
+						<Button size='large' fullWidth>
 							Terminar compra
 						</Button>
 					</Link>
 					<Link to='/Store' className='linkCarrito'>
-						<Button size='large' fullWidth={true}>
+						<Button size='large' fullWidth>
 							Seguir comprando
 						</Button>
 					</Link>

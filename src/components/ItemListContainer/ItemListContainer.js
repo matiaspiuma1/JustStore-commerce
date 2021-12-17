@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import './ItemListContainer.css';
 
-//Firebase
-import { db } from '../../Firebase/FirebaseConfig';
-import { collection, query, getDocs } from 'firebase/firestore';
-
-//Components
-import Item from '../Item/Item';
+// Firebase
+import { collection, query, getDocs, where } from 'firebase/firestore';
 import { Box, Grid } from '@mui/material';
-// import { useParams } from 'react-router-dom';
+import { db } from '../../Firebase/FirebaseConfig';
+
+// Components
+import Item from '../Item/Item';
+import { useParams } from 'react-router-dom';
 
 const ItemListContainer = () => {
-	//Items
+	// Items
 	const [items, setItems] = useState([]);
-	// const { id } = useParams();
 
-	//Llamo a la base de datos de Firebase y obtengo todos los productos
-	//Los seteo para que se guarden en un array vacio ya antes creado (items)
+	// Me fijo en la url el tipo de producto seleccionado
+	const { type } = useParams();
+
+	// Llamo a la base de datos de Firebase y obtengo todos los productos
+	// Los seteo para que se guarden en un array vacio ya antes creado (items)
 	useEffect(() => {
 		const getProducts = async () => {
-			const q = query(collection(db, 'products'));
+			const q = query(collection(db, 'products'), where('type', '==', type));
 			const docs = [];
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach((doc) => {
@@ -28,15 +30,17 @@ const ItemListContainer = () => {
 			setItems(docs);
 		};
 		getProducts();
-	}, []);
+	}, [type]);
 
-	//Mapeo los items que llamo desde Firebase
+	console.log(items);
+
+	// Mapeo los items que llamo desde Firebase
 	return (
 		<Box>
 			<Grid container justifyContent='space-evenly' sx={{ marginTop: '75px' }}>
-				{items.map((item) => {
-					return <Item data={item} key={item.title} />;
-				})}
+				{items.map((item) => (
+					<Item data={item} key={item.title} />
+				))}
 			</Grid>
 		</Box>
 	);

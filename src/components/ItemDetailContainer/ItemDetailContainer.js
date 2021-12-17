@@ -1,38 +1,42 @@
 import React, { useEffect, useState } from 'react';
 
-//Firebase
+// Firebase
+import { collection, query, getDocs, where, documentId } from 'firebase/firestore';
 import { db } from '../../Firebase/FirebaseConfig';
-import { collection, query, getDocs } from 'firebase/firestore';
 
-//Components
+// Components
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 
 const ItemDetailContainer = () => {
-	//Item
-	const [item, setItem] = useState({});
+	// Item
+	const [item, setItem] = useState([]);
 
-	//ID de los productos para poder filtrarlo
-	let { id } = useParams();
+	// ID de los productos para poder filtrarlo mediante la URL
+	const { id } = useParams();
 
-	//Llamo a los productos desde la base de datos y luego filtro al item que se quiere ver
+	// Llamo a los productos desde la base de datos
 	useEffect(() => {
 		const getItem = async () => {
-			const q = query(collection(db, 'products'));
-			const item = [];
+			const q = query(collection(db, 'products'), where(documentId(), '==', id));
+			const itemArray = [];
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach((doc) => {
-				item.push({ ...doc.data(), id: doc.id });
+				itemArray.push({ ...doc.data(), id: doc.id });
 			});
-			setItem(item.find((itemID) => itemID.id === id));
+			setItem(itemArray);
 		};
 		getItem();
 	}, [id]);
 
-	//Y luego lo paso como prop
+	// Y luego mapeo el ItemDetail
+	// Y le paso como prop la informacion antes filtrada
+
 	return (
 		<>
-			<ItemDetail item={item} />;
+			{item.map((itemInfo) => (
+				<ItemDetail item={itemInfo} key={itemInfo.id} />
+			))}
 		</>
 	);
 };

@@ -41,13 +41,13 @@ const ItemCount = ({ item, onAdd }) => {
 		<>
 			<div style={{ display: !shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
 				<CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
-					<Button size='small' variant='outlined' onClick={removeProduct}>
+					<Button size='small' variant='outlined' color='error' onClick={removeProduct}>
 						-
 					</Button>
 					<Typography textAlign='center' marginRight='15px' marginLeft='15px'>
 						{counter} producto/s
 					</Typography>
-					<Button id='agregarBtn' size='small' variant='outlined' onClick={addProduct}>
+					<Button id='agregarBtn' size='small' variant='outlined' color='success' onClick={addProduct}>
 						+
 					</Button>
 				</CardActions>
@@ -62,7 +62,7 @@ const ItemCount = ({ item, onAdd }) => {
 							Terminar compra
 						</Button>
 					</Link>
-					<Link to='/Store' className='linkCarrito'>
+					<Link to='/producto/remeras' className='linkCarrito'>
 						<Button size='large' fullWidth>
 							Seguir comprando
 						</Button>

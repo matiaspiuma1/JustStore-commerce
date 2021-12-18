@@ -32,8 +32,6 @@ const ItemListContainer = () => {
 		getProducts();
 	}, [type]);
 
-	console.log(items);
-
 	// Mapeo los items que llamo desde Firebase
 	return (
 		<Box>

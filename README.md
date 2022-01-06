@@ -7,7 +7,7 @@ Tienda de ropa, eccommerce Proyecto Final curso React JS
 - React Bootstrap
 - react-router-dom
 - sweetalert2
-### Estas librerias fueron usadas ya que mejoran la UI y permiten no usar mucho CSS.
+### Estas librerias fueron usadas ya que mejoran la UI, permiten no usar mucho CSS y estilizar de una forma mas rapida.
 
 # Pantalla de bienvenida
 

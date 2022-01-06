@@ -9,7 +9,7 @@ import ItemCount from '../ItemCount/ItemCount';
 import { Context } from '../../Context';
 
 const ItemDetail = ({ item }) => {
-	// Funcion agregar carrito
+	// Función agregar carrito
 	const { addItem } = useContext(Context);
 
 	const onAdd = (quantity) => {
@@ -18,7 +18,7 @@ const ItemDetail = ({ item }) => {
 
 	return (
 		<div className='contenedorCard'>
-			<Card sx={{ maxWidth: '100%', boxShadow: 'rgba(0, 0, 0, 0.4) 0px 30px 90px', borderRadius: '10px' }} className='cardInfo'>
+			<Card sx={{ maxWidth: '100%', boxShadow: 'rgb(38, 57, 77) 0px 20px 30px -10px', borderRadius: '10px' }} className='cardInfo'>
 				<CardMedia component='img' alt={item.title} height='550' image={item.img} width='100%' />
 				<CardContent>
 					<Typography gutterBottom variant='h5' component='div' textAlign='center'>
@@ -26,9 +26,6 @@ const ItemDetail = ({ item }) => {
 					</Typography>
 					<Typography variant='h6' color='text.primary' textAlign='center'>
 						Precio: ${item.price}
-					</Typography>
-					<Typography variant='h6' color='text.secondary' textAlign='center'>
-						{item.type}
 					</Typography>
 					<Typography variant='h6' color='text.secondary' textAlign='center'>
 						Talle: {item.size}

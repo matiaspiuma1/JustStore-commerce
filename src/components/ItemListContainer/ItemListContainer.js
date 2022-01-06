@@ -3,7 +3,7 @@ import './ItemListContainer.css';
 
 // Firebase
 import { collection, query, getDocs, where } from 'firebase/firestore';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, CircularProgress } from '@mui/material';
 import { db } from '../../Firebase/FirebaseConfig';
 
 // Components
@@ -13,6 +13,9 @@ import { useParams } from 'react-router-dom';
 const ItemListContainer = () => {
 	// Items
 	const [items, setItems] = useState([]);
+
+	// Loader
+	const [isLoading, setIsLoading] = useState(false);
 
 	// Me fijo en la url el tipo de producto seleccionado
 	const { type } = useParams();
@@ -29,18 +32,28 @@ const ItemListContainer = () => {
 			});
 			setItems(docs);
 		};
+		// Timeout para que se quede un segundo el spinner de carga
+		setTimeout(() => {
+			setIsLoading(true);
+		}, 1000);
 		getProducts();
 	}, [type]);
 
 	// Mapeo los items que llamo desde Firebase
 	return (
-		<Box>
-			<Grid container justifyContent='space-evenly' sx={{ marginTop: '75px' }}>
-				{items.map((item) => (
-					<Item data={item} key={item.title} />
-				))}
-			</Grid>
-		</Box>
+		<div>
+			{isLoading ? (
+				<Box>
+					<Grid container justifyContent='space-evenly' sx={{ marginTop: '75px' }}>
+						{items.map((item) => (
+							<Item data={item} key={item.title} />
+						))}
+					</Grid>
+				</Box>
+			) : (
+				<CircularProgress color='inherit' className='spinner' />
+			)}
+		</div>
 	);
 };
 

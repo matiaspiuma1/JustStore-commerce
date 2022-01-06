@@ -27,6 +27,8 @@
 		"no-unused-vars": "off",
 		"react/no-array-index-key": "off",
 		"prefer-const": "off",
-		"react/jsx-no-useless-fragment": "off"
+		"react/jsx-no-useless-fragment": "off",
+		"eqeqeq": "off",
+		"object-shorthand": "off"
 	}
 }

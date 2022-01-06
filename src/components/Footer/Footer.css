@@ -1,0 +1,9 @@
+.linkToHome {
+	text-decoration: none;
+	color: black;
+	margin-left: 10px;
+}
+
+.linkToHome:hover {
+	color: black;
+}

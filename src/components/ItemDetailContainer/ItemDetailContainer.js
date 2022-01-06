@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './ItemDetailContainer.css';
 
 // Firebase
 import { collection, query, getDocs, where, documentId } from 'firebase/firestore';
@@ -7,10 +8,14 @@ import { db } from '../../Firebase/FirebaseConfig';
 // Components
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
+import { Box, CircularProgress } from '@mui/material';
 
 const ItemDetailContainer = () => {
 	// Item
 	const [item, setItem] = useState([]);
+
+	// Spinner
+	const [isLoading, setIsLoading] = useState(false);
 
 	// ID de los productos para poder filtrarlo mediante la URL
 	const { id } = useParams();
@@ -26,6 +31,10 @@ const ItemDetailContainer = () => {
 			});
 			setItem(itemArray);
 		};
+		// Timeout para que se quede un segundo el spinner de carga
+		setTimeout(() => {
+			setIsLoading(true);
+		}, 1000);
 		getItem();
 	}, [id]);
 
@@ -34,9 +43,15 @@ const ItemDetailContainer = () => {
 
 	return (
 		<>
-			{item.map((itemInfo) => (
-				<ItemDetail item={itemInfo} key={itemInfo.id} />
-			))}
+			{isLoading ? (
+				<Box>
+					{item.map((itemInfo) => (
+						<ItemDetail item={itemInfo} key={itemInfo.id} />
+					))}
+				</Box>
+			) : (
+				<CircularProgress color='inherit' className='spinner' />
+			)}
 		</>
 	);
 };

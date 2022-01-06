@@ -16,13 +16,35 @@ export const ItemsProvider = ({ children }) => {
 		if (cartList.length !== 0) {
 			const index = cartList.findIndex((obj) => obj.item.id === item.id);
 			if (index !== -1) {
-				let cart = cartList;
-				cart[index].quantity = cart[index].quantity + quantity;
-				cartList.push(cart);
-			} else setCartList([...cartList, { item, quantity }]);
-		} else setCartList([{ item, quantity }]);
+				const newCart = cartList;
+				newCart[index].quantity = newCart[index].quantity + quantity;
+				setCartList(newCart);
+			} else setCartList([...cartList, { item, quantity: quantity }]);
+		} else setCartList([{ item, quantity: quantity }]);
 		setQtyItems(qtyItems + quantity);
 	};
 
-	return <Context.Provider value={{ addItem, cartList, qtyItems }}>{children}</Context.Provider>;
+	// Función para eliminar item del carrito
+	const deleteItem = (itemId, quantity) => {
+		setCartList(cartList.filter((obj) => obj.item.id != itemId));
+		setQtyItems(qtyItems - quantity);
+	};
+
+	// Función para saber el total de items en el carrito
+	const itemsTotal = () => {
+		return cartList.reduce((acum, item) => acum + item.quantity, 0);
+	};
+
+	// Función para saber el precio total
+	const totalPrice = () => {
+		return cartList.reduce((acum, value) => acum + value.quantity * value.item.price, 0);
+	};
+
+	// Función para limpiar el carrito por completo
+	const clearCart = () => {
+		setCartList([]);
+		setQtyItems(0);
+	};
+
+	return <Context.Provider value={{ addItem, cartList, qtyItems, deleteItem, itemsTotal, totalPrice, clearCart }}>{children}</Context.Provider>;
 };

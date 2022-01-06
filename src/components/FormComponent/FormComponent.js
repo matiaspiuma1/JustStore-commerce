@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import './FormComponent.css';
 
+// Firebase
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../Firebase/FirebaseConfig';
+
+// Components
+import { Stack, Typography, Button, TextField, Box } from '@mui/material';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const initialState = {
 	name: '',
@@ -21,24 +27,32 @@ const FormComponent = () => {
 
 	const onSubmitEvent = async (e) => {
 		e.preventDefault();
-		console.log(values);
-
 		const docRef = await addDoc(collection(db, 'buyer'), { values });
-
 		setValues(initialState);
-		console.log('Documento creado con Firebase', docRef.id);
+		Swal.fire({
+			icon: 'success',
+			title: '¡Compra realizada con exito!',
+			showConfirmButton: true,
+			confirmButtonText: `<a style='text-decoration: none;' href='https://just-store-ecommerce.vercel.app/'>Cerrar</a>`,
+			text: `Tu id de compra es ${docRef.id}`,
+		});
 	};
 
 	return (
-		<>
-			<form onSubmit={onSubmitEvent} className='form-container'>
-				<input placeholder='Name' name='name' value={values.name} onChange={onChangeHandler} />
-				<input placeholder='Last Name' name='lastName' value={values.lastName} onChange={onChangeHandler} />
-				<input placeholder='Adress' name='adress' value={values.adress} onChange={onChangeHandler} />
-				<input placeholder='Email' name='email' value={values.email} onChange={onChangeHandler} />
-				<button type='submit'>Buy</button>
+		<Stack sx={{ marginTop: '75px', textAlign: 'center' }}>
+			<Typography variant='h4' sx={{ marginBottom: '50px' }}>
+				Terminando compra
+			</Typography>
+			<form onSubmit={onSubmitEvent} className='form-container' style={{ marginBottom: '14%' }}>
+				<TextField required id='filled-error' label='Requerido' helperText='Tu nombre' variant='filled' name='name' value={values.name} onChange={onChangeHandler} />
+				<TextField required id='filled-error' label='Requerido' helperText='Tu apellido' variant='filled' name='lastName' value={values.lastName} onChange={onChangeHandler} />
+				<TextField required id='filled-error' label='Requerido' helperText='Tu dirección' variant='filled' name='adress' value={values.adress} onChange={onChangeHandler} />
+				<TextField required id='filled-error' label='Requerido' helperText='Tu email' variant='filled' name='email' value={values.email} onChange={onChangeHandler} />
+				<Button variant='outlined' type='submit'>
+					Comprar
+				</Button>
 			</form>
-		</>
+		</Stack>
 	);
 };
 

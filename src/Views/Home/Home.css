@@ -1,3 +1,13 @@
-.Home {
-	margin-top: 65px;
+.spinner {
+	margin-top: 20%;
+	margin-left: 25%;
+}
+
+.contenedor-img {
+	opacity: 0.5;
+	margin-right: 50px;
+}
+.contenedor-img:hover {
+	transition: 0.5s ease-in-out;
+	opacity: 1;
 }

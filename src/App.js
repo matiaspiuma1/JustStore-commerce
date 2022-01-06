@@ -9,6 +9,7 @@ import Cart from './Views/Cart/Cart';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import FormComponent from './components/FormComponent/FormComponent';
+import Footer from './components/Footer/Footer';
 
 const App = () => (
 	<ItemsProvider>
@@ -21,6 +22,7 @@ const App = () => (
 				<Route path='/product/:type' element={<ItemListContainer />} />
 				<Route path='/checkout' element={<FormComponent />} />
 			</Routes>
+			<Footer />
 		</Router>
 	</ItemsProvider>
 );

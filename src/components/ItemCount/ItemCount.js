@@ -4,6 +4,11 @@ import './ItemCount.css';
 // Components
 import { CardActions, Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
+// Icons
+import AddRoundedIcon from '@mui/icons-material/AddRounded';
+import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 
 // Context
 
@@ -35,6 +40,12 @@ const ItemCount = ({ item, onAdd }) => {
 	const handleOnAdd = () => {
 		onAdd(counter);
 		setShopBtn(true);
+		Swal.fire({
+			icon: 'success',
+			title: '¡Agregado correctamente!',
+			timer: 1500,
+			showConfirmButton: false,
+		});
 	};
 
 	return (
@@ -42,13 +53,13 @@ const ItemCount = ({ item, onAdd }) => {
 			<div style={{ display: !shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
 				<CardActions sx={{ display: 'flex', justifyContent: 'center' }}>
 					<Button size='small' variant='outlined' color='error' onClick={removeProduct}>
-						-
+						<RemoveRoundedIcon />
 					</Button>
 					<Typography textAlign='center' marginRight='15px' marginLeft='15px'>
 						{counter} producto/s
 					</Typography>
 					<Button id='agregarBtn' size='small' variant='outlined' color='success' onClick={addProduct}>
-						+
+						<AddRoundedIcon />
 					</Button>
 				</CardActions>
 				<Button onClick={handleOnAdd} size='large' fullWidth>
@@ -59,10 +70,10 @@ const ItemCount = ({ item, onAdd }) => {
 				<CardActions sx={{ display: shopBtn ? `${('flex', 'justifyContent: center')}` : 'none' }}>
 					<Link to='/Cart' className='linkCarrito'>
 						<Button size='large' fullWidth>
-							Terminar compra
+							Ir al carrito
 						</Button>
 					</Link>
-					<Link to='/producto/remeras' className='linkCarrito'>
+					<Link to='/product/remeras' className='linkCarrito'>
 						<Button size='large' fullWidth>
 							Seguir comprando
 						</Button>

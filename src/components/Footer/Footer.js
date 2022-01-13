@@ -13,7 +13,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 
 const Footer = () => {
 	return (
-		<Box sx={{ display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row', paddingTop: '50px', paddingBottom: '50px', backgroundColor: '#bbb', marginTop: '70px' }} className='footer'>
+		<Box sx={{ display: 'flex', justifyContent: 'space-evenly', flexDirection: 'row', paddingTop: '50px', paddingBottom: '50px', backgroundColor: '#bbb', marginTop: '70px', alignItems: 'center' }} className='footer'>
 			<Link to='/' className='linkToHome'>
 				<Typography variant='h6' align='center' sx={{ textDecoration: 'none' }}>
 					<img src={Logo} alt='Icono tienda' />
